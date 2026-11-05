@@ -7,12 +7,12 @@ FetchContent_Declare(
     GIT_SHALLOW ON
 )
 
-function(example_provide_dependency method package_name)
+macro(example_provide_dependency method package_name)
     if("${package_name}" STREQUAL "Catch2")
         FetchContent_MakeAvailable(Catch2)
-        set(Catch2_FOUND ON PARENT_SCOPE)
+        set(Catch2_FOUND ON)
     endif()
-endfunction()
+endmacro()
 
 cmake_language(
     SET_DEPENDENCY_PROVIDER example_provide_dependency
